@@ -92,9 +92,7 @@ module Octopus
   end
 end
 
-
 require "octopus/model"
-require "octopus/migration"
 require "octopus/association_collection"
 require "octopus/has_and_belongs_to_many_association"
 require "octopus/association"
@@ -107,6 +105,9 @@ if defined?(::Rails)
   require "octopus/railtie"
 end
 
+unless Octopus.config['without_migration'] == true
+  require "octopus/migration"
+end
 
 require "octopus/proxy"
 require "octopus/scope_proxy"
